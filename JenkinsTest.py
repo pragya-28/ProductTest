@@ -3,9 +3,9 @@ from selenium import webdriver
 import time
 from selenium.webdriver.common.keys import Keys
 
-username = 'pragyashukla_OLnaWD'
-accessKey = 'FnPcK7wi9tXLwP1UY3Mo'
-buildName = 'JENKINS_LABEL'
+username = os.environ.get('BROWSERSTACK_USERNAME')
+accessKey = os.environ.get('BROWSERSTACK_ACCESS_KEY')
+buildName = os.environ.get('JENKINS_LABEL')
 
 bstack_options = {
     "os" : "Windows",
