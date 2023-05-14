@@ -6,7 +6,7 @@ from selenium.webdriver.common.keys import Keys
 
 username = os.environ.get('BROWSERSTACK_USERNAME')
 accessKey = os.environ.get('BROWSERSTACK_ACCESS_KEY')
-buildName = os.environ.get('JENKINS_LABEL')
+buildName = os.environ.get('JENKINS_LABEL','0')
 
 bstack_options = {
     "os" : "Windows",
