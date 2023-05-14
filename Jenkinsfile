@@ -20,6 +20,7 @@ pipeline {
         stage('setup') {
             steps {
                 browserstack(credentialsId: '78e87401-8946-4e7e-9d5c-b9dccfbb8e52'){
+                    sh 'python JenkinsTest.py'
                     echo 'Hello....'}
             }
         }
