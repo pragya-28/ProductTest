@@ -17,7 +17,7 @@ bstack_options = {
 }
 options = ChromeOptions()
 options.set_capability('bstack:options', bstack_options)
-driver = webdriver.Remote(
+driver = webdriver.ChromeOptions(
     command_executor="https://hub.browserstack.com/wd/hub",
     options=options)
 
