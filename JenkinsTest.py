@@ -32,7 +32,7 @@ versions = [
 ]
 
 for i in versions:
-    print(f'Test init - {i['os']} and {i['browser']}')
+    print(i['browser'])
     driver = webdriver.Remote(
     command_executor="https://hub.browserstack.com/wd/hub",
     desired_capabilities=i)
@@ -57,4 +57,4 @@ for i in versions:
         )
     driver.close()
     driver.quit()
-    print(f'Test fini - {i['os']} and {i['browser']}')
+    print('Test fini')
