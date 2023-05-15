@@ -4,7 +4,7 @@ from selenium import webdriver
 import time
 from selenium.webdriver.common.keys import Keys
 
-userName = os.environ.get("BROWSERSTACK_USERNAME")
+username = os.environ.get("BROWSERSTACK_USERNAME")
 accessKey = os.environ.get("BROWSERSTACK_ACCESS_KEY")
 buildName = os.environ.get("JENKINS_LABEL", "0")
 
