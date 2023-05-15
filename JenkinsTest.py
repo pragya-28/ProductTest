@@ -4,97 +4,57 @@ from selenium import webdriver
 import time
 from selenium.webdriver.common.keys import Keys
 
-username = os.environ.get('BROWSERSTACK_USERNAME')
-accessKey = os.environ.get('BROWSERSTACK_ACCESS_KEY')
-buildName = os.environ.get('JENKINS_LABEL','0')
+userName = os.environ.get("BROWSERSTACK_USERNAME")
+accessKey = os.environ.get("BROWSERSTACK_ACCESS_KEY")
+buildName = os.environ.get("JENKINS_LABEL", "0")
 
-bstack_options_1 = {
-    "os" : "Windows",
-    "osVersion" : "10",
-    "sessionName" : "BStack Build Name: " + buildName,
-    "seleniumVersion" : "4.0.0",
-    "userName": username,
-    "accessKey": accessKey	
+versions = [
+{
+ 'os': 'Windows',
+ 'os_version': '10',
+ 'browser': 'chrome',
+ 'browser_version': 'latest',
+ 'name': 'BStack-[Jenkins] Sample Test',
+ 'build': buildName,
+ 'browserstack.user': userName,
+ 'browserstack.key': accessKey
+},
+{
+ 'os': 'Windows',
+ 'os_version': '10',
+ 'browser': 'firefox',
+ 'browser_version': 'latest',
+ 'name': 'BStack-[Jenkins] Sample Test',
+ 'build': buildName,
+ 'browserstack.user': userName,
+ 'browserstack.key': accessKey
 }
-bstack_options_2 = {
-    "os" : "Windows",
-    "osVersion" : "8",
-    "sessionName" : "BStack Build Name: " + buildName,
-    "seleniumVersion" : "4.0.0",
-    "userName": username,
-    "accessKey": accessKey	
-}
+]
 
-options = webdriver.ChromeOptions()
-options.set_capability('bstack:options', bstack_options_1)
-#options.set_capability('bstack:options', bstack_options_2)
-driver = webdriver.Remote(
+for i in versions:
+    print(f'Test init - {i['os']} and {i['browser']}')
+    driver = webdriver.Remote(
     command_executor="https://hub.browserstack.com/wd/hub",
-    options=options)
+    desired_capabilities=i)
+    
+    driver.maximize_window()
+    driver.get("https://www.google.com/")
+    driver.find_element("name", "q").send_keys("BrowserStack")
+    time.sleep(3)
+    try:
 
-###############################################
-print("Sample test case for CHROME started")
-
-#driver = webdriver.Chrome()
-
-driver.maximize_window()
-driver.get("https://www.google.com/")
-
-driver.find_element("name","q").send_keys("BrowserStack")
-time.sleep(3)
-
-try:
-
-	driver.find_element("name","btnK").send_keys(Keys.ENTER)
-	time.sleep(3)
-	#print("Sample test case for CHROME successful")
-	driver.execute_script(
-	   'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed", "reason": "Sample test case for CHROME successful"}}')
-
-except Exception as err:
-    message = 'Exception: ' + "btnK was not found for CHROME"
-    #print(message + "Sample test case for CHROME NOT successful")
-    driver.execute_script(
-       'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed", "reason": ' + json.dumps(message) + '}}')
-
-driver.close()
-driver.quit()
-###############################################
-
-options = webdriver.FirefoxOptions()
-#options.set_capability('bstack:options', bstack_options_1)
-options.set_capability('bstack:options', bstack_options_2)
-driver = webdriver.Remote(
-    command_executor="https://hub.browserstack.com/wd/hub",
-    options=options)
-
-print("Sample test case for FIREFOX started")
-
-#driver = webdriver.Firefox()
-
-driver.maximize_window()
-driver.get("https://www.google.com/")
-
-driver.find_element("name","q").send_keys("BrowserStack")
-time.sleep(3)
-
-driver.find_element("name","btnK").send_keys(Keys.ENTER)
-time.sleep(3)
-
-try:
-
-	driver.find_element("name","btnK").send_keys(Keys.ENTER)
-	time.sleep(3)
-	#print("Sample test case for FIREFOX successful")
-	driver.execute_script(
-	   'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed", "reason": "Sample test case for FIREFOX successful"}}')
-
-except Exception as err:
-    print (err)
-    message = 'Exception: ' + "btnK was not found for FIREFOX "
-    #print(message + "Sample test case for FIREFOX NOT successful")
-    driver.execute_script(
-       'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed", "reason": ' + json.dumps(message) + '}}')
-
-driver.close()
-driver.quit()
+        driver.find_element("name", "btnK").send_keys(Keys.ENTER)
+        time.sleep(3)
+        driver.execute_script(
+            'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed", "reason": "Sample test case for CHROME successful"}}'
+        )
+    except Exception as err:
+        message = "Exception: " + "btnK was not found for CHROME"
+        driver.execute_script(
+            'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed", "reason": '
+            + json.dumps(message)
+            + "}}"
+        )
+    driver.close()
+    driver.quit()
+    print(f'Test fini - {i['os']} and {i['browser']}')
