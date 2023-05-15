@@ -30,7 +30,7 @@ versions = [
 
 for i in versions:
     print(i['osVersion'])
-    options = ChromeOptions()
+    options = webdriver.ChromeOptions()
     options.set_capability('bstack:options', i)
     driver = webdriver.Remote(
     command_executor="https://hub.browserstack.com/wd/hub",
@@ -55,4 +55,4 @@ for i in versions:
         )
     driver.close()
     driver.quit()
-    print('test fini')
+    print('test finish')
