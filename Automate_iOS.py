@@ -29,7 +29,7 @@ versions = [
 
 
 for i in versions:
-    print(i['os'])
+    print(i['osVersion'])
     options = ChromeOptions()
     options.set_capability('bstack:options', i)
     driver = webdriver.Remote(
