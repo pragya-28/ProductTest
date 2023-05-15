@@ -10,33 +10,31 @@ buildName = os.environ.get("JENKINS_LABEL", "0")
 
 versions = [
 {
- 'os': 'Windows',
- 'os_version': '10',
- 'browser': 'chrome',
- 'browser_version': 'latest',
- 'name': 'BStack-[Jenkins] Sample Test',
- 'build': buildName,
- 'browserstack.user': userName,
- 'browserstack.key': accessKey
+    "os" : "Windows",
+    "osVersion" : "10",
+    "sessionName" : "BStack Build Name: " + buildName,
+    "seleniumVersion" : "4.0.0",
+    "userName": username,
+    "accessKey": accessKey
 },
 {
- 'os': 'Windows',
- 'os_version': '10',
- 'browser': 'firefox',
- 'browser_version': 'latest',
- 'name': 'BStack-[Jenkins] Sample Test',
- 'build': buildName,
- 'browserstack.user': userName,
- 'browserstack.key': accessKey
+    "os" : "Windows",
+    "osVersion" : "8",
+    "sessionName" : "BStack Build Name: " + buildName,
+    "seleniumVersion" : "4.0.0",
+    "userName": username,
+    "accessKey": accessKey
 }
 ]
 
+
 for i in versions:
-    print(i['browser'])
+    print(i['os'])
+    options = ChromeOptions()
+    options.set_capability('bstack:options', i)
     driver = webdriver.Remote(
     command_executor="https://hub.browserstack.com/wd/hub",
-    desired_capabilities=i)
-    
+    options=options)
     driver.maximize_window()
     driver.get("https://www.google.com/")
     driver.find_element("name", "q").send_keys("BrowserStack")
@@ -57,4 +55,4 @@ for i in versions:
         )
     driver.close()
     driver.quit()
-    print('Test fini')
+    print('test fini')
