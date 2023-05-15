@@ -27,46 +27,13 @@ bstack_options_2 = {
 
 options = webdriver.ChromeOptions()
 options.set_capability('bstack:options', bstack_options_1)
-#options.set_capability('bstack:options', bstack_options_2)
+options.set_capability('bstack:options', bstack_options_2)
 driver = webdriver.Remote(
     command_executor="https://hub.browserstack.com/wd/hub",
     options=options)
 
 ###############################################
 print("Sample test case for CHROME started")
-
-#driver = webdriver.Chrome()
-
-driver.maximize_window()
-driver.get("https://www.google.com/")
-
-driver.find_element("name","q").send_keys("BrowserStack")
-time.sleep(3)
-
-try:
-
-	driver.find_element("name","btnK").send_keys(Keys.ENTER)
-	time.sleep(3)
-	#print("Sample test case for CHROME successful")
-	driver.execute_script(
-	   'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed", "reason": "Sample test case for CHROME successful"}}')
-
-except Exception as err:
-    message = 'Exception: ' + "btnK was not found for CHROME"
-    #print(message + "Sample test case for CHROME NOT successful")
-    driver.execute_script(
-       'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed", "reason": ' + json.dumps(message) + '}}')
-
-driver.close()
-driver.quit()
-
-print("Sample test case for CHROME started")
-
-options = webdriver.ChromeOptions()
-options.set_capability('bstack:options', bstack_options_2)
-driver = webdriver.Remote(
-    command_executor="https://hub.browserstack.com/wd/hub",
-    options=options)
 
 #driver = webdriver.Chrome()
 
