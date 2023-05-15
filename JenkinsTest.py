@@ -27,7 +27,7 @@ bstack_options_2 = {
 
 options = webdriver.ChromeOptions()
 options.set_capability('bstack:options', bstack_options_1)
-options.set_capability('bstack:options', bstack_options_2)
+#options.set_capability('bstack:options', bstack_options_2)
 driver = webdriver.Remote(
     command_executor="https://hub.browserstack.com/wd/hub",
     options=options)
@@ -61,6 +61,12 @@ driver.close()
 driver.quit()
 
 print("Sample test case for CHROME started")
+
+options = webdriver.ChromeOptions()
+options.set_capability('bstack:options', bstack_options_2)
+driver = webdriver.Remote(
+    command_executor="https://hub.browserstack.com/wd/hub",
+    options=options)
 
 #driver = webdriver.Chrome()
 
