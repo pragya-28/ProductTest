@@ -17,8 +17,8 @@ bstack_options = {
     "accessKey": accessKey	
 }
 bstack_options_1 = {
-    "os" : "Firefox",
-    "osVersion" : "2.2.1",
+    "os" : "Windows",
+    "osVersion" : "8",
     "sessionName" : "BStack Build Name: " + buildName,
     "seleniumVersion" : "4.0.0",
     "userName": username,
@@ -27,7 +27,7 @@ bstack_options_1 = {
 
 options = webdriver.ChromeOptions()
 options.set_capability('bstack:options', bstack_options)
-options.set_capability('bstack:options_1', bstack_options_1)
+options.set_capability('bstack:options', bstack_options_1)
 driver = webdriver.Remote(
     command_executor="https://hub.browserstack.com/wd/hub",
     options=options)
