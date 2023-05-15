@@ -8,7 +8,7 @@ username = os.environ.get('BROWSERSTACK_USERNAME')
 accessKey = os.environ.get('BROWSERSTACK_ACCESS_KEY')
 buildName = os.environ.get('JENKINS_LABEL','0')
 
-bstack_options = {
+bstack_options_1 = {
     "os" : "Windows",
     "osVersion" : "10",
     "sessionName" : "BStack Build Name: " + buildName,
@@ -16,7 +16,7 @@ bstack_options = {
     "userName": username,
     "accessKey": accessKey	
 }
-bstack_options_1 = {
+bstack_options_2 = {
     "os" : "Windows",
     "osVersion" : "8",
     "sessionName" : "BStack Build Name: " + buildName,
@@ -26,8 +26,8 @@ bstack_options_1 = {
 }
 
 options = webdriver.ChromeOptions()
-options.set_capability('bstack:options', bstack_options)
 options.set_capability('bstack:options', bstack_options_1)
+options.set_capability('bstack:options', bstack_options_2)
 driver = webdriver.Remote(
     command_executor="https://hub.browserstack.com/wd/hub",
     options=options)
