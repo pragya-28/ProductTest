@@ -9,22 +9,22 @@ accessKey = os.environ.get('BROWSERSTACK_ACCESS_KEY')
 buildName = os.environ.get('JENKINS_LABEL','0')
 
 bstack_options = {
-	{(
+	({
     "os" : "Windows",
     "osVersion" : "10",
     "sessionName" : "BStack Build Name: " + buildName,
     "seleniumVersion" : "4.0.0",
     "userName": username,
     "accessKey": accessKey
-	)},
-	{(
+	}),
+	({
     "os" : "Firefox",
     "osVersion" : "2.2.1",
     "sessionName" : "BStack Build Name: " + buildName,
     "seleniumVersion" : "4.0.0",
     "userName": username,
     "accessKey": accessKey
-	)}
+	})
 }
 
 options = webdriver.ChromeOptions()
