@@ -60,33 +60,41 @@ except Exception as err:
 driver.close()
 driver.quit()
 ###############################################
-# print("Sample test case for FIREFOX started")
 
-# driver = webdriver.Firefox()
+options = webdriver.FirefoxOptions()
+options.set_capability('bstack:options', bstack_options_1)
+options.set_capability('bstack:options', bstack_options_2)
+driver = webdriver.Remote(
+    command_executor="https://hub.browserstack.com/wd/hub",
+    options=options)
 
-# driver.maximize_window()
-# driver.get("https://www.google.com/")
+print("Sample test case for FIREFOX started")
 
-# driver.find_element("name","q").send_keys("BrowserStack")
-# time.sleep(3)
+#driver = webdriver.Firefox()
 
-# driver.find_element("name","btnK").send_keys(Keys.ENTER)
-# time.sleep(3)
+driver.maximize_window()
+driver.get("https://www.google.com/")
 
-# try:
+driver.find_element("name","q").send_keys("BrowserStack")
+time.sleep(3)
 
-# 	driver.find_element("name","btnK").send_keys(Keys.ENTER)
-# 	time.sleep(3)
-# 	#print("Sample test case for FIREFOX successful")
-# 	driver.execute_script(
-# 	   'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed", "reason": "Sample test case for FIREFOX successful"}}')
+driver.find_element("name","btnK").send_keys(Keys.ENTER)
+time.sleep(3)
 
-# except Exception as err:
-#     print (err)
-#     message = 'Exception: ' + "btnK was not found for FIREFOX "
-#     #print(message + "Sample test case for FIREFOX NOT successful")
-#     driver.execute_script(
-#        'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed", "reason": ' + json.dumps(message) + '}}')
+try:
 
-# driver.close()
-# driver.quit()
+	driver.find_element("name","btnK").send_keys(Keys.ENTER)
+	time.sleep(3)
+	#print("Sample test case for FIREFOX successful")
+	driver.execute_script(
+	   'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed", "reason": "Sample test case for FIREFOX successful"}}')
+
+except Exception as err:
+    print (err)
+    message = 'Exception: ' + "btnK was not found for FIREFOX "
+    #print(message + "Sample test case for FIREFOX NOT successful")
+    driver.execute_script(
+       'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed", "reason": ' + json.dumps(message) + '}}')
+
+driver.close()
+driver.quit()
