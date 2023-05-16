@@ -8,25 +8,42 @@ userName = os.environ.get("BROWSERSTACK_USERNAME")
 accessKey = os.environ.get("BROWSERSTACK_ACCESS_KEY")
 buildName = os.environ.get("JENKINS_LABEL", "0")
 
-options_1 = {
-    "platformName": "Android",
+versions = [
+{
     "osVersion" : "10.0",
     "deviceName" : "Samsung Galaxy S20",
-    "browserName": "Chrome",
     "sessionName" : "BStack Build Name: " + buildName,
     "seleniumVersion" : "4.0.0",
     "userName": userName,
     "accessKey": accessKey
 }
+]
 
-options = webdriver.ChromeOptions()
-options.set_capability('bstack:options', options_1)
+for i in versions:
+    print(i['osVersion'])
+    options = webdriver.ChromeOptions()
+    options.set_capability('bstack:options', i)
+    driver = webdriver.Remote(
+    command_executor="https://hub.browserstack.com/wd/hub",
+    options=options)
+    driver.maximize_window()
+    driver.get("https://www.browserstack.com/")
+    #driver.find_element("name", "q").send_keys("BrowserStack")
+    time.sleep(3)
+    # try:
 
-driver = webdriver.Remote(
-    command_executor="https://hub.browserstack.com/wd/hub", options = options)
-driver.get('https://www.google.com')
-search_box = driver.find_element_by_name('q')
-search_box.send_keys('browserstack')
-search_box.submit()
-driver.quit()
-
+    #     driver.find_element("name", "btnK").send_keys(Keys.ENTER)
+    #     time.sleep(3)
+    #     driver.execute_script(
+    #         'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed", "reason": "Sample test case for CHROME successful"}}'
+    #     )
+    # except Exception as err:
+    #     message = "Exception: " + "btnK was not found for CHROME"
+    #     driver.execute_script(
+    #         'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed", "reason": '
+    #         + json.dumps(message)
+    #         + "}}"
+    #     )
+    driver.close()
+    driver.quit()
+    print('test finish')
