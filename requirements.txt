@@ -2,3 +2,4 @@ browserstack-local >= 1.2.3
 selenium
 browserstack-sdk
 urllib3==1.26.6
+Appium-Python-Client==2.10.0
