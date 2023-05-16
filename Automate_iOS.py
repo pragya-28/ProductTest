@@ -1,58 +1,27 @@
-import os
-import json
-from selenium import webdriver
-import time
-from selenium.webdriver.common.keys import Keys
+from appium import webdriver
+from appium.webdriver.common.mobileby import MobileBy
+from appium.webdriver.common.touch_action import TouchAction
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
-userName = os.environ.get("BROWSERSTACK_USERNAME")
-accessKey = os.environ.get("BROWSERSTACK_ACCESS_KEY")
-buildName = os.environ.get("JENKINS_LABEL", "0")
+user_name = os.getenv("BROWSERSTACK_USERNAME")
+access_key = os.getenv("BROWSERSTACK_ACCESS_KEY")
+build_name = os.environ.get("JENKINS_LABEL", "0")
+app = os.getenv("BROWSERSTACK_APP_ID")
 
-versions = [
-{
-    "osVersion" : "16",
-    "deviceName" : "iPhone 14",
-    "sessionName" : "BStack Build Name: " + buildName,
-    "seleniumVersion" : "4.0.0",
-    "userName": userName,
-    "accessKey": accessKey
-},
-{
-    "osVersion" : "10.0",
-    "deviceName" : "Samsung Galaxy S20",
-    "sessionName" : "BStack Build Name: " + buildName,
-    "seleniumVersion" : "4.0.0",
-    "userName": userName,
-    "accessKey": accessKey
+desired_cap = {
+    'app': 'com.android.chrome',
+    'device': 'Samsung Galaxy S8',
+    'build': build_name,
+    'appActivity: com.google.android.apps.chrome.Main'
 }
-]
 
+driver = webdriver.Remote("https://"+user_name+":"+access_key+"@hub-cloud.browserstack.com/wd/hub", desired_cap)
 
-for i in versions:
-    print(i['osVersion'])
-    options = webdriver.ChromeOptions()
-    options.set_capability('bstack:options', i)
-    driver = webdriver.Remote(
-    command_executor="https://hub.browserstack.com/wd/hub",
-    options=options)
-    driver.maximize_window()
-    driver.get("https://www.google.com/")
-    driver.find_element("name", "q").send_keys("BrowserStack")
-    time.sleep(3)
-    try:
-
-        driver.find_element("name", "btnK").send_keys(Keys.ENTER)
-        time.sleep(3)
-        driver.execute_script(
-            'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed", "reason": "Sample test case for CHROME successful"}}'
-        )
-    except Exception as err:
-        message = "Exception: " + "btnK was not found for CHROME"
-        driver.execute_script(
-            'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed", "reason": '
-            + json.dumps(message)
-            + "}}"
-        )
-    driver.close()
-    driver.quit()
-    print('test finish')
+wait = WebDriverWait(driver, 10)
+search_box = wait.until(EC.presence_of_element_located((MobileBy.ID, "com.android.chrome:id/search_box_text")))
+search_box.click()
+search_input = wait.until(EC.presence_of_element_located((MobileBy.ID, "com.android.chrome:id/url_bar")))
+search_input.send_keys("browserstack.com")
+driver.press_keycode(66)
+driver.quit()
