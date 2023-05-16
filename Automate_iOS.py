@@ -9,8 +9,7 @@ access_key = os.getenv("BROWSERSTACK_ACCESS_KEY")
 build_name = os.environ.get("JENKINS_LABEL", "0")
 app = os.getenv("BROWSERSTACK_APP_ID")
 
-desired_cap = 
-{
+desired_cap = {
     'app': 'com.android.chrome',
     'device': 'Samsung Galaxy S8',
     'build': build_name,
