@@ -16,7 +16,15 @@ versions = [
     "seleniumVersion" : "4.0.0",
     "userName": userName,
     "accessKey": accessKey
-}
+},
+    {
+    "osVersion" : "13.0",
+    "deviceName" : "Google Pixel 7",
+    "sessionName" : "BStack Build Name: " + buildName,
+    "seleniumVersion" : "4.0.0",
+    "userName": userName,
+    "accessKey": accessKey
+    }
 ]
 
 for i in versions:
@@ -30,20 +38,7 @@ for i in versions:
     driver.get("https://www.browserstack.com/")
     #driver.find_element("name", "q").send_keys("BrowserStack")
     time.sleep(3)
-    # try:
-
-    #     driver.find_element("name", "btnK").send_keys(Keys.ENTER)
-    #     time.sleep(3)
-    #     driver.execute_script(
-    #         'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed", "reason": "Sample test case for CHROME successful"}}'
-    #     )
-    # except Exception as err:
-    #     message = "Exception: " + "btnK was not found for CHROME"
-    #     driver.execute_script(
-    #         'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed", "reason": '
-    #         + json.dumps(message)
-    #         + "}}"
-    #     )
+   
     driver.close()
     driver.quit()
     print('test finish')
