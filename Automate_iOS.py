@@ -27,7 +27,7 @@ options = UiAutomator2Options().load_capabilities({
     }
 })
 
-driver = webdriver.Remote("http://hub.browserstack.com/wd/hub", options=options)
+driver = webdriver.Remote("https://"+user_name+":"+access_key+"@hub-cloud.browserstack.com/wd/hub", options=options)
 search_element = WebDriverWait(driver, 30).until(
     EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Search Wikipedia"))
 )
