@@ -5,7 +5,7 @@ userName = os.environ.get("BROWSERSTACK_USERNAME")
 accessKey = os.environ.get("BROWSERSTACK_ACCESS_KEY")
 buildName = os.environ.get("JENKINS_LABEL", "0")
 
-options = {
+options_1 = {
     "platformName": "Android",
     "osVersion" : "10.0",
     "deviceName" : "Samsung Galaxy S20",
@@ -15,6 +15,9 @@ options = {
     "userName": userName,
     "accessKey": accessKey
 }
+
+options = webdriver.ChromeOptions()
+options.set_capability('bstack:options', options_1)
 
 driver = webdriver.Remote(
     command_executor="https://hub.browserstack.com/wd/hub", options = options)
