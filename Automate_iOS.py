@@ -14,6 +14,7 @@ app = os.getenv("BROWSERSTACK_APP_ID")
 desired_cap = {
     'app': 'com.android.chrome',
     'device': 'Samsung Galaxy S8',
+    'platformName' : 'android',
     'build': build_name,
     'appActivity': 'com.google.android.apps.chrome.Main'
 }
