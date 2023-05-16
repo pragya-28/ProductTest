@@ -17,7 +17,7 @@ options = {
 }
 
 driver = webdriver.Remote(
-    command_executor="https://hub.browserstack.com/wd/hub", options)
+    command_executor="https://hub.browserstack.com/wd/hub", options = options)
 driver.get('https://www.google.com')
 search_box = driver.find_element_by_name('q')
 search_box.send_keys('browserstack')
