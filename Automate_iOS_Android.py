@@ -16,9 +16,11 @@ options = {
     "accessKey": accessKey
 }
 
-driver = webdriver.Remote("https://"+userName+":"+accessKey+"@hub-cloud.browserstack.com/wd/hub",options)
+driver = webdriver.Remote(
+    command_executor="https://hub.browserstack.com/wd/hub", options)
 driver.get('https://www.google.com')
 search_box = driver.find_element_by_name('q')
 search_box.send_keys('browserstack')
 search_box.submit()
 driver.quit()
+
