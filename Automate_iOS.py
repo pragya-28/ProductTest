@@ -15,7 +15,7 @@ options = UiAutomator2Options().load_capabilities({
     "platformVersion" : "9.0",
     "deviceName" : "Google Pixel 3",
 
-    "app" : "https://www.browserstack.com/app-automate/sample-apps/android/WikipediaSample.apk",
+    "app" : "bs://9efe81dd25c709c3d1561af7f1ad3a086963f370",
 
     'bstack:options' : {
         "projectName" : "Project - Testing",
