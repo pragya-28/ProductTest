@@ -14,7 +14,7 @@ desired_cap =
     'app': 'com.android.chrome',
     'device': 'Samsung Galaxy S8',
     'build': build_name,
-    'appActivity: com.google.android.apps.chrome.Main'
+    'appActivity': 'com.google.android.apps.chrome.Main'
 }
 
 driver = webdriver.Remote("https://"+user_name+":"+access_key+"@hub-cloud.browserstack.com/wd/hub", desired_cap)
