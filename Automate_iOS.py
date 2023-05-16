@@ -10,24 +10,16 @@ user_name = os.getenv("BROWSERSTACK_USERNAME")
 access_key = os.getenv("BROWSERSTACK_ACCESS_KEY")
 build_name = os.environ.get("JENKINS_LABEL", "0")
 
-options = UiAutomator2Options().load_capabilities({
+desired_cap = {
     "platformName" : "android",
     "platformVersion" : "9.0",
     "deviceName" : "Google Pixel 3",
-
     "app" : "bs://9efe81dd25c709c3d1561af7f1ad3a086963f370",
+    'build': build_name
+}
 
-    'bstack:options' : {
-        "projectName" : "Project - Testing",
-        "buildName" : "testing-build-1",
-        "sessionName" : "first_test",
+driver = webdriver.Remote("https://"+user_name+":"+access_key+"@hub-cloud.browserstack.com/wd/hub", desired_cap)
 
-        "userName" : user_name,
-        "accessKey" : access_key
-    }
-})
-
-driver = webdriver.Remote("https://"+user_name+":"+access_key+"@hub-cloud.browserstack.com/wd/hub", options=options)
 search_element = WebDriverWait(driver, 30).until(
     EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Search Wikipedia"))
 )
