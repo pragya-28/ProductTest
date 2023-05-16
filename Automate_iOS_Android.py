@@ -1,3 +1,4 @@
+import os
 from appium import webdriver
 
 userName = os.environ.get("BROWSERSTACK_USERNAME")
