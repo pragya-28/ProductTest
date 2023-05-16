@@ -10,8 +10,8 @@ buildName = os.environ.get("JENKINS_LABEL", "0")
 
 versions = [
 {
-    "osVersion" : "14",
-    "deviceName" : "iPhone 12",
+    "osVersion" : "16",
+    "deviceName" : "iPhone 14",
     "sessionName" : "BStack Build Name: " + buildName,
     "seleniumVersion" : "4.0.0",
     "userName": userName,
@@ -22,7 +22,9 @@ versions = [
 for i in versions:
     print(i['osVersion'])
     options = webdriver.ChromeOptions()
+    time.sleep(3)
     options.set_capability('bstack:options', i)
+    time.sleep(3)
     driver = webdriver.Remote(
     command_executor="https://hub.browserstack.com/wd/hub",
     options=options)
