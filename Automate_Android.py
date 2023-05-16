@@ -35,9 +35,10 @@ for i in versions:
     command_executor="https://hub.browserstack.com/wd/hub",
     options=options)
     driver.maximize_window()
-    driver.get("https://www.browserstack.com/")
-    #driver.find_element("name", "q").send_keys("BrowserStack")
     time.sleep(3)
+    driver.get("https://www.browserstack.com/")
+    time.sleep(3)
+    #driver.find_element("name", "q").send_keys("BrowserStack")
    
     driver.close()
     driver.quit()
