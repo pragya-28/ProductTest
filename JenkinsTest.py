@@ -28,6 +28,26 @@ versions = [
     "browserName" : "Firefox",
     "userName": username,
     "accessKey": accessKey
+},
+{
+    "os" : "Windows",
+    "osVersion" : "8.1",
+    "sessionName" : "BStack Build Name: " + buildName,
+    "seleniumVersion" : "3.5.2",
+    "browserVersion" : "109.0",
+    "browserName" : "Edge",
+    "userName": username,
+    "accessKey": accessKey
+},
+{
+    "os" : "Windows",
+    "osVersion" : "7",
+    "sessionName" : "BStack Build Name: " + buildName,
+    "seleniumVersion" : "3.5.2",
+    "browserVersion" : "11.0",
+    "browserName" : "IE",
+    "userName": username,
+    "accessKey": accessKey
 }
 ]
 
