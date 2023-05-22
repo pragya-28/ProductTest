@@ -6,26 +6,29 @@ from selenium.webdriver.common.keys import Keys
 
 username = os.environ.get("BROWSERSTACK_USERNAME")
 accessKey = os.environ.get("BROWSERSTACK_ACCESS_KEY")
-buildName = os.environ.get("JENKINS_LABEL", "0")
+buildName = os.environ.get("JENKINS_LABEL", "Parallel Testing: Sample Test")
 
 versions = [
-{
+{   {
     "os" : "Windows",
-    "osVersion" : "10",
+    "osVersion" : "11",
     "sessionName" : "BStack Build Name: " + buildName,
-    "seleniumVersion" : "4.0.0",
+    "seleniumVersion" : "3.14.0",
+    "browserVersion" : "latest-beta",
     "userName": username,
     "accessKey": accessKey
-},
-{
-    "os" : "Windows",
-    "osVersion" : "8",
-    "sessionName" : "BStack Build Name: " + buildName,
-    "seleniumVersion" : "4.0.0",
-    "userName": username,
-    "accessKey": accessKey
+    },
+"browserName" : "Chrome",
 }
 ]
+# {
+#     "os" : "Windows",
+#     "osVersion" : "8",
+#     "sessionName" : "BStack Build Name: " + buildName,
+#     "seleniumVersion" : "4.0.0",
+#     "userName": username,
+#     "accessKey": accessKey
+# }
 
 
 for i in versions:
