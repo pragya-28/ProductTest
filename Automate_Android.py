@@ -6,7 +6,7 @@ from selenium.webdriver.common.keys import Keys
 
 userName = os.environ.get("BROWSERSTACK_USERNAME")
 accessKey = os.environ.get("BROWSERSTACK_ACCESS_KEY")
-buildName = os.environ.get("JENKINS_LABEL", "0")
+buildName = os.environ.get("JENKINS_LABEL", "Sample Automate test on Android")
 
 versions = [
 {
@@ -20,6 +20,22 @@ versions = [
     {
     "osVersion" : "9.0",
     "deviceName" : "Google Pixel 3",
+    "sessionName" : "BStack Build Name: " + buildName,
+    "seleniumVersion" : "4.0.0",
+    "userName": userName,
+    "accessKey": accessKey
+    },
+    {
+    "osVersion" : "11.0",
+    "deviceName" : "OnePlus 9",
+    "sessionName" : "BStack Build Name: " + buildName,
+    "seleniumVersion" : "4.0.0",
+    "userName": userName,
+    "accessKey": accessKey
+    },
+    {
+    "osVersion" : "11.0",
+    "deviceName" : "Xiaomi Redmi Note 11",
     "sessionName" : "BStack Build Name: " + buildName,
     "seleniumVersion" : "4.0.0",
     "userName": userName,
