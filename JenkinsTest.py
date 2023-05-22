@@ -15,6 +15,7 @@ versions = [
     "sessionName" : "BStack Build Name: " + buildName,
     "seleniumVersion" : "3.14.0",
     "browserVersion" : "latest-beta",
+    "browserName" : "Chrome"
     "userName": username,
     "accessKey": accessKey
     },
