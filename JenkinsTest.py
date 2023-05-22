@@ -40,6 +40,17 @@ versions = [
     "accessKey": accessKey
 },
 {
+    "os" : "OS X",
+    "osVersion" : "Ventura",
+    "sessionName" : "BStack Build Name: " + buildName,
+    "seleniumVersion" : "3.14.0",
+    "browserVersion" : "16.0",
+    "browserName" : "Safari",
+    "userName": username,
+    "accessKey": accessKey
+},
+# Test case FAILED for IE open #
+{
     "os" : "Windows",
     "osVersion" : "7",
     "sessionName" : "BStack Build Name: " + buildName,
@@ -49,6 +60,7 @@ versions = [
     "userName": username,
     "accessKey": accessKey
 }
+# Test case FAILED for IE closed #
 ]
 
 for i in versions:
