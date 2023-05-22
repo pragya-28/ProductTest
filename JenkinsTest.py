@@ -82,7 +82,7 @@ for i in versions:
             'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed", "reason": "Sample test case successful"}}'
         )
     except Exception as err:
-        message = "Exception: " + "btnK was not found for CHROME"
+        message = "Exception: " + "btnK was not found in" + i['browserName']
         driver.execute_script(
             'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed", "reason": '
             + json.dumps(message)
