@@ -64,7 +64,7 @@ versions = [
 ]
 
 for i in versions:
-    print(i['os'])
+    print(i['browserName'])
     options = webdriver.ChromeOptions()
     options.set_capability('bstack:options', i)
     driver = webdriver.Remote(
@@ -79,7 +79,7 @@ for i in versions:
         driver.find_element("name", "btnK").send_keys(Keys.ENTER)
         time.sleep(3)
         driver.execute_script(
-            'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed", "reason": "Sample test case for CHROME successful"}}'
+            'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed", "reason": "Sample test case successful"}}'
         )
     except Exception as err:
         message = "Exception: " + "btnK was not found for CHROME"
@@ -90,4 +90,4 @@ for i in versions:
         )
     driver.close()
     driver.quit()
-    print('test fini')
+    print('test finish')
