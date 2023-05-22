@@ -9,15 +9,15 @@ accessKey = os.environ.get("BROWSERSTACK_ACCESS_KEY")
 buildName = os.environ.get("JENKINS_LABEL", "Sample Automate test on iOS")
 
 versions = [
-{
-    "osVersion" : "16",
-    "deviceName" : "iPhone 14",
-    "sessionName" : "BStack Build Name: " + buildName,
-    "seleniumVersion" : "4.0.0",
-    "browserName" : "Chrome",
-    "userName": userName,
-    "accessKey": accessKey
-}
+# {
+#     "osVersion" : "16",
+#     "deviceName" : "iPhone 14",
+#     "sessionName" : "BStack Build Name: " + buildName,
+#     "seleniumVersion" : "4.0.0",
+#     "browserName" : "Chrome",
+#     "userName": userName,
+#     "accessKey": accessKey
+# }
 # },
 # {
 #     "osVersion" : "16",
@@ -35,14 +35,15 @@ versions = [
 #     "userName": userName,
 #     "accessKey": accessKey
 # },
-# {
-#     "osVersion" : "13",
-#     "deviceName" : "iPad Pro 12.9 2020",
-#     "sessionName" : "BStack Build Name: " + buildName,
-#     "seleniumVersion" : "4.0.0",
-#     "userName": userName,
-#     "accessKey": accessKey
-# }
+{
+    "osVersion" : "13",
+    "deviceName" : "iPad Pro 12.9 2020",
+    "browserName" : "Chrome",
+    "sessionName" : "BStack Build Name: " + buildName,
+    "seleniumVersion" : "4.0.0",
+    "userName": userName,
+    "accessKey": accessKey
+}
 ]
 
 for i in versions:
@@ -58,8 +59,12 @@ for i in versions:
     time.sleep(3)
     driver.get("https://www.browserstack.com/")
     time.sleep(3)
-    #driver.find_element("name", "q").send_keys("BrowserStack")
-   
     driver.close()
-    driver.quit()
     print('test finish')
+    #driver.find_element("name", "q").send_keys("BrowserStack")
+    
+driver.quit()
+
+    
+   
+    
