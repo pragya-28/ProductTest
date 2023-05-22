@@ -18,16 +18,18 @@ versions = [
     "browserName" : "Chrome",
     "userName": username,
     "accessKey": accessKey
-}]
-# {
-#     "os" : "Windows",
-#     "osVersion" : "8",
-#     "sessionName" : "BStack Build Name: " + buildName,
-#     "seleniumVersion" : "4.0.0",
-#     "userName": username,
-#     "accessKey": accessKey
-# }
-
+},
+{
+    "os" : "Windows",
+    "osVersion" : "10",
+    "sessionName" : "BStack Build Name: " + buildName,
+    "seleniumVersion" : "3.10.0",
+    "browserVersion" : "latest",
+    "browserName" : "Firefox",
+    "userName": username,
+    "accessKey": accessKey
+}
+]
 
 for i in versions:
     print(i['os'])
