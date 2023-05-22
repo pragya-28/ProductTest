@@ -9,19 +9,16 @@ accessKey = os.environ.get("BROWSERSTACK_ACCESS_KEY")
 buildName = os.environ.get("JENKINS_LABEL", "Parallel Testing: Sample Test")
 
 versions = [
-{   {
+{
     "os" : "Windows",
     "osVersion" : "11",
     "sessionName" : "BStack Build Name: " + buildName,
     "seleniumVersion" : "3.14.0",
     "browserVersion" : "latest-beta",
-    "browserName" : "Chrome"
+    "browserName" : "Chrome",
     "userName": username,
     "accessKey": accessKey
-    },
-"browserName" : "Chrome",
-}
-]
+}]
 # {
 #     "os" : "Windows",
 #     "osVersion" : "8",
