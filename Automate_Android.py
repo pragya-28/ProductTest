@@ -18,8 +18,8 @@ versions = [
     "accessKey": accessKey
 },
     {
-    "osVersion" : "13.0",
-    "deviceName" : "Google Pixel 7",
+    "osVersion" : "9.0",
+    "deviceName" : "Google Pixel 3",
     "sessionName" : "BStack Build Name: " + buildName,
     "seleniumVersion" : "4.0.0",
     "userName": userName,
