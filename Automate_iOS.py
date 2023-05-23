@@ -9,32 +9,31 @@ accessKey = os.environ.get("BROWSERSTACK_ACCESS_KEY")
 buildName = os.environ.get("JENKINS_LABEL", "Sample Automate test on iOS")
 
 versions = [
-# {
-#     "osVersion" : "16",
-#     "deviceName" : "iPhone 14",
-#     "sessionName" : "BStack Build Name: " + buildName,
-#     "seleniumVersion" : "4.0.0",
-#     "browserName" : "Chrome",
-#     "userName": userName,
-#     "accessKey": accessKey
-# }
-# },
-# {
-#     "osVersion" : "16",
-#     "deviceName" : "iPhone 14 Pro Max",
-#     "sessionName" : "BStack Build Name: " + buildName,
-#     "seleniumVersion" : "4.0.0",
-#     "userName": userName,
-#     "accessKey": accessKey
-# },
-# {
-#     "osVersion" : "14",
-#     "deviceName" : "iPad Air 4",
-#     "sessionName" : "BStack Build Name: " + buildName,
-#     "seleniumVersion" : "4.0.0",
-#     "userName": userName,
-#     "accessKey": accessKey
-# },
+{
+    "osVersion" : "16",
+    "deviceName" : "iPhone 14",
+    "sessionName" : "BStack Build Name: " + buildName,
+    "seleniumVersion" : "4.0.0",
+    "browserName" : "Chrome",
+    "userName": userName,
+    "accessKey": accessKey
+},
+{
+    "osVersion" : "16",
+    "deviceName" : "iPhone 14 Pro Max",
+    "sessionName" : "BStack Build Name: " + buildName,
+    "seleniumVersion" : "4.0.0",
+    "userName": userName,
+    "accessKey": accessKey
+},
+{
+    "osVersion" : "14",
+    "deviceName" : "iPad Air 4",
+    "sessionName" : "BStack Build Name: " + buildName,
+    "seleniumVersion" : "4.0.0",
+    "userName": userName,
+    "accessKey": accessKey
+},
 {
     "osVersion" : "13",
     "deviceName" : "iPad Pro 12.9 2020",

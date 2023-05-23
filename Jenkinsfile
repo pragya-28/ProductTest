@@ -21,6 +21,8 @@ pipeline {
             steps {
                 browserstack(credentialsId: '78e87401-8946-4e7e-9d5c-b9dccfbb8e52'){
                     sh 'pip3 install -r requirements.txt'
+                    sh 'python3 JenkinsTest.py'
+                    sh 'python3 Automate_Android.py'
                     sh 'python3 Automate_iOS.py'
                     echo 'Hello....'}
             }
